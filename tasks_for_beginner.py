@@ -7,7 +7,7 @@
 
 def reverse_string(string: str) -> str:
     """
-        Возвращает строку в обратном порядке
+        Возвращает строку, в которой слова идут в обратном порядке.
 
         Args:
             string (str): Любая строка.
@@ -15,7 +15,7 @@ def reverse_string(string: str) -> str:
         Returns:
             str: Строка в обратном порядке.
         """
-    reversed_string = ''.join(reversed(string))
+    reversed_string = ''.join(reversed(string.split()))
     return reversed_string
 
 
@@ -109,8 +109,8 @@ def max_subarray_sum(array: list[int]) -> int:
     """
     max_sum = float('-inf')
     cur_sum = 0
-    for i in array:
-        cur_sum += i
+    for num in array:
+        cur_sum += num
         max_sum = max(max_sum, cur_sum)
 
         if cur_sum < 0:
