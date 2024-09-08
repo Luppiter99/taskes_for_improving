@@ -15,7 +15,7 @@ def reverse_string(string: str) -> str:
         Returns:
             str: Строка в обратном порядке.
         """
-    reversed_string = ''.join(reversed(string.split()))
+    reversed_string = ' '.join(reversed(string.split()))
     return reversed_string
 
 
@@ -107,6 +107,9 @@ def max_subarray_sum(array: list[int]) -> int:
     Returns:
         int: максимальная сумма подмассива.
     """
+    if not array:
+        return 0
+
     max_sum = float('-inf')
     cur_sum = 0
     for num in array:

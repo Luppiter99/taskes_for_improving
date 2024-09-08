@@ -20,7 +20,7 @@ def words_index_map(strings: list[str]) -> dict[str, set[int]]:
     """
     words_count = {}
     for index, value in enumerate(strings):
-        for word in value.split():
+        for word in value.lower().split():
             if word in words_count:
                 words_count[word].add(index)
             else:
@@ -51,8 +51,10 @@ def clean_file(input_file: str, output_file: str) -> None:
         None: Функция ничего не возвращает, результат записывается в указанный
         выходной файл.
     """
-    with open(input_file) as file_with_spaces, \
-         open(output_file, 'w') as clean_file:
-        for line in file_with_spaces:
-            if line.strip():
-                clean_file.write(line)
+    with open(input_file, 'r') as file_with_spaces:
+        lines_without_spaces = [
+            line for line in file_with_spaces if line.strip()
+        ]
+
+    with open(output_file, 'w') as clean_file:
+        clean_file.writelines(lines_without_spaces)
